@@ -46,7 +46,7 @@ export default function Form(props) {
     const { setResult, setDetails } = props;
     const [inputs, setInputs] = useState(input);
     const handleChange = useCallback((params) => {
-        setInputs(input)
+        setInputs(input);
         setInputs([...input, ...params]);
     });
 
@@ -62,12 +62,14 @@ export default function Form(props) {
                             />
                         );
                     })}
-                    <Select attr={select} handleChange={handleChange}/>
+                    <Select attr={select} handleChange={handleChange} />
                     <div className="col-2 d-flex justify-content-end align-items-end">
                         <button
                             type="button"
                             className="btn btn-primary pe-4"
-                            onClick={() => sendData(setResult,setDetails, inputs)}
+                            onClick={() =>
+                                sendData(setResult, setDetails, inputs)
+                            }
                         >
                             <span
                                 id="spinner"

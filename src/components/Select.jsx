@@ -30,6 +30,8 @@ export default function Select(props) {
                     },
                 ]);
                 break;
+            default:
+                handleChange([]);
         }
     };
 
