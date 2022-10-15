@@ -11,10 +11,6 @@ export const input = [
         label: "Target Capacity",
         id: "capacity",
     },
-    {
-        label: "Number of iterations",
-        id: "iterations"
-    }
 ];
 
 export const select = {

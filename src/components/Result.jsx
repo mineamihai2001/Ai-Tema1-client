@@ -16,6 +16,7 @@ export default function Result(props) {
         <div id="result" className="my-5">
             <div className="d-flex justify-content-start align-items-center mb-5">
                 <h1 className="">Result </h1>
+                <p className="fs-6 mt-4 ms-3">(POUR(x) means POUR from container(x) to container(y))</p>
                 <button
                     className={`btn btn-secondary ms-auto ${
                         result.length === 0 ? "d-none" : ""

@@ -1,13 +1,14 @@
 import InputGroup from "./InputGroup";
 import Select from "./Select";
 import { format, input, select } from "../config";
+import { useCallback, useState } from "react";
 
-const sendData = (setResult, setDetails) => {
+const sendData = (setResult, setDetails, inputs) => {
     const spinner = document.getElementById("spinner");
     spinner.classList.remove("invisible");
 
     const idList = [];
-    input.map((inputGroup) => idList.push(inputGroup.id));
+    inputs.map((inputGroup) => idList.push(inputGroup.id));
     idList.push(select.id);
 
     const data = [];
@@ -43,11 +44,17 @@ const sendData = (setResult, setDetails) => {
 
 export default function Form(props) {
     const { setResult, setDetails } = props;
+    const [inputs, setInputs] = useState(input);
+    const handleChange = useCallback((params) => {
+        setInputs(input)
+        setInputs([...input, ...params]);
+    });
+
     return (
         <>
             <form id="instance-form">
                 <div className="row">
-                    {input.map((inputGroup) => {
+                    {inputs.map((inputGroup) => {
                         return (
                             <InputGroup
                                 label={inputGroup.label}
@@ -55,12 +62,12 @@ export default function Form(props) {
                             />
                         );
                     })}
-                    <Select attr={select} />
+                    <Select attr={select} handleChange={handleChange}/>
                     <div className="col-2 d-flex justify-content-end align-items-end">
                         <button
                             type="button"
                             className="btn btn-primary pe-4"
-                            onClick={() => sendData(setResult,setDetails)}
+                            onClick={() => sendData(setResult,setDetails, inputs)}
                         >
                             <span
                                 id="spinner"
